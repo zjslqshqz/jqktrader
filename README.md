@@ -1,6 +1,6 @@
-# 注意！！！由于此种方式交易并不稳定，此项目以停止维护！！！请选择QMT/Ptrade等专业量化交易软件代替！！！
+# 注意！！！由于此种方式交易并不稳定！！！请选择QMT/Ptrade等专业量化交易软件代替！！！
 
-需要QMT/Ptrade开通渠道的可以联系我。
+# 本项目 fork 至 jqktrader 仅用学习使用
 
 # jqktrader
 
@@ -48,7 +48,6 @@ user.connect(
   tesseract_cmd=r'D:\Program Files\Tesseract-OCR\tesseract.exe'
 )
 
-user.position
 ```
 
 **exe_path** 同花顺`xiadan.exe`的路径
@@ -61,10 +60,4 @@ user.position
 
 参看文档：https://easytrader.readthedocs.io/zh/master/usage/
 
-## 联系方式
-
-欢迎加入QQ群或关注公众号，分享量化技术！
-
-<img src="./qq.png" width=300>
-<img src="./qrcode.jpg" width=300>
 

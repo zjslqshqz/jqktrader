@@ -98,13 +98,13 @@ class Copy(BaseStrategy):
     def _get_clipboard_data(self) -> str:
         if Copy._need_captcha_reg:
             if (
-                    self._trader.app.top_window().window(class_name="Static", title_re="验证码").exists(timeout=1)
+                    self._trader.app.top_window().child_window(class_name="Static", title_re="提示").exists(timeout=1)
             ):
                 file_path = "tmp.png"
                 count = 5
                 found = False
                 while count > 0:
-                    self._trader.app.top_window().window(
+                    self._trader.app.top_window().child_window(
                         control_id=0x965, class_name="Static"
                     ).capture_as_image().save(
                         file_path
@@ -114,18 +114,18 @@ class Copy(BaseStrategy):
                     captcha_num = "".join(captcha_num.split())
                     logger.info("captcha result-->" + captcha_num)
                     if len(captcha_num) == 4:
-                        self._trader.app.top_window().window(
+                        self._trader.app.top_window().child_window(
                             control_id=0x964, class_name="Edit"
                         ).set_focus()
 
-                        pywinauto.keyboard.SendKeys("{BKSP}{BKSP}{BKSP}{BKSP}")
+                        pywinauto.keyboard.send_keys("{BKSP}{BKSP}{BKSP}{BKSP}")
 
-                        pywinauto.keyboard.SendKeys(captcha_num)
+                        pywinauto.keyboard.send_keys(captcha_num)
 
                         self._trader.app.top_window().set_focus()
-                        pywinauto.keyboard.SendKeys("{ENTER}")  # 模拟发送enter，点击确定
+                        pywinauto.keyboard.send_keys("{ENTER}")  # 模拟发送enter，点击确定
 
-                        if (self._trader.app.top_window().window(class_name="Static", title_re="验证码").exists(timeout=1)):
+                        if (self._trader.app.top_window().child_window(class_name="Static", title_re="验证码").exists(timeout=1)):
                             logger.info("验证码识别错误")
                         else:
                             found = True
@@ -133,7 +133,7 @@ class Copy(BaseStrategy):
                         # try:
                         #     logger.info(
                         #         self._trader.app.top_window()
-                        #             .window(control_id=0x966, class_name="Static")
+                        #             .child_window(control_id=0x966, class_name="Static")
                         #             .window_text()
                         #     )
                         # except Exception as ex:  # 窗体消失
@@ -142,7 +142,7 @@ class Copy(BaseStrategy):
                         #     break
                     count -= 1
                     self._trader.wait(0.1)
-                    self._trader.app.top_window().window(
+                    self._trader.app.top_window().child_window(
                         control_id=0x965, class_name="Static"
                     ).click()
                 if not found:

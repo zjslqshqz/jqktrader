@@ -1,6 +1,6 @@
-# 注意！！！由于此种方式交易并不稳定！！！请选择QMT/Ptrade等专业量化交易软件代替！！！
+# 本项目 fork [zsrl/jqktrader](https://github.com/zsrl/jqktrader) 仅用学习使用
 
-# 本项目 fork 至 jqktrader 仅用学习使用
+# 注意！！！由于此种方式交易并不稳定！！！请选择QMT/Ptrade等专业量化交易软件代替！！！
 
 # jqktrader
 
